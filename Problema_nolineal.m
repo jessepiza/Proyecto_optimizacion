@@ -167,10 +167,7 @@ calcular_w = true;
 
 % Comenzamos el algoritmo del Método de gradiente proyectado.
 while norm(x_k1 - x_k) > tol
-    ant_x = inf;
-    if (x_k1 ~= inf)
-        ant_x = x_k1;
-    end
+    ant_x = x_k1;
     % Gradiente de la función objetivo.
     g = [diff(f, x_11); diff(f, x_12); diff(f, x_13); diff(f, x_14); diff(f, x_15);
         diff(f, x_21); diff(f, x_22); diff(f, x_23); diff(f, x_24); diff(f, x_25);
@@ -272,6 +269,7 @@ while norm(x_k1 - x_k) > tol
             x_k = ant_x;
         end
         x_k1 = x_k + alpha2*d_k;
+        calcular_w = true;
     end
 end
 % Reemplazo de los valores de x_k+1 en la función objetivo para hallar el
